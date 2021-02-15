@@ -8,4 +8,5 @@
 - quando usa uma lista do state, é necessário que tenha uma chave unica.
 
 - Quando componentes só possuem propriedades, chamamos de stateless componentes. Caso contrários, stateful components(componentes inteligentes).
-  -Nossa aplicação inteira só tem um estado!
+
+-Nossa aplicação inteira só tem um estado!

@@ -26,6 +26,22 @@ class App extends Component {
       }
     ]
   }
+
+  adicionarComentario = () => {
+    const novoComentario = {
+      nome: 'Eugênia',
+      email: 'eugenia@gmail.com',
+      data: new Date(),
+      mensagem: 'Boas novas!!'
+    }
+    // opção 1
+    // let lista = this.state.comentarios
+    // lista.push(novoComentario)
+    // this.setState({comentarios: lista})
+   // opção 2, utilização de novos conceitos e atualização via dom virtual com setState através do react
+   this.setState({comentarios: [...this.state.comentarios, novoComentario]})
+  }
+
   render() {
     return (
       <div className="App">
@@ -39,6 +55,8 @@ class App extends Component {
         {comentario.mensagem}
       </Comentario>  
         ))}
+
+        <button onClick={this.adicionarComentario}>Adicionar comentário</button>
       </div>
     );
   }
