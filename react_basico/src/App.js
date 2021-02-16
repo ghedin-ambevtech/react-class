@@ -34,7 +34,8 @@ class App extends Component {
 
   adicionarComentario = evento => {
     // anular um evento de post em Javascript
-    // fazendo isso para que o submit funcione e adicione o comentario corretamente
+    // fazendo isso para que o submit funcione e adicione o comentario corretamente.
+    // Caso não faça isso, será executado diretamente um post
     evento.preventDefault(); // aqui anula
     // const novoComentario = {
     //   nome: 'Eugênia',
@@ -49,17 +50,20 @@ class App extends Component {
    // opção 2, utilização de novos conceitos e atualização via dom virtual com setState através do react
    this.setState({
      comentarios: [...this.state.comentarios, novoComentario],
-     novoComentario: {nome: '', email: '', mensagem: ''}
+     novoComentario: {nome: '', email: '', mensagem: ''} /*ao finalizar a lista, limpa campos de comentario*/ 
   })
 
   }
 
+  //busca a lista, renderiza lista filtrada com os registros diferentes do comentario selecionado
   removerComentario = comentario => {
     let lista = this.state.comentarios;
     lista = lista.filter(c => c !== comentario)
     this.setState({ comentarios: lista })
   }
-
+  
+  // Função chamada cada vez que alguém digita algo no formulário, está ligado ao onChange
+  //target é o evento disparado cada vez que uma tecla é digitada
   digitarCampo = evento =>{
     const {name, value} = evento.target
     this.setState({novoComentario: {...this.state.novoComentario, [name]: value}})
@@ -75,7 +79,8 @@ class App extends Component {
         nome={comentario.nome}
         email={comentario.email}
         data={comentario.data}
-        onRemove={this.removerComentario.bind(this, comentario)}>
+        //não estou executando a função aqui, estou criando um bind(ligação) que faz com que execute passando a referencia do proprio comentario.
+        onRemove={this.removerComentario.bind(this, comentario)}> 
         {comentario.mensagem}
       </Comentario>  
         ))}

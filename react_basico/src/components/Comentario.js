@@ -2,6 +2,7 @@ import React from 'react';
 import  './Comentario.css'
 
 // JSX
+// REcebe como parâmetro as propriedades dessa classe que se encontram no App
 const Comentario = props => (
     <div className="Comentario">
         <h2>{props.nome}</h2> 
