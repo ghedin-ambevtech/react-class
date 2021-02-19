@@ -8,7 +8,7 @@
 - Começar a trabalhar com o projeto:
   ```js
     cd react-basico
-    npm-start
+    npm start
   ```
 - Já abre direto o navegador rodando a aplicação react
 
